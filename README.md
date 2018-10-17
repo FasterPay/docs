@@ -9,33 +9,23 @@
 
 ● Easy integration.
 
-Alongside serving your business its essential needs such as:
-
-● Recurring billing
-
-● Mass payouts to individual and suppliers.
-
-● Risk tools included in your account.
-
-● 24/7 customer service.
-
 
 # Prerequisite
 
-Before Starting the project please make sure you had created a Faster Pay account and submitted all required documents with details. If not submitted yet please [click here](https://my.passport.io/account/).After setting up the account please take a note of below details :
+Before Starting the project please make sure you had created a Faster Pay account and submitted all required documents with details. If not submitted yet please [click here](https://my.passport.io/account/). After setting up the account please take a note of below details :
 
-● Your API Keys(Publick Key, Private Key)[ Direct URL to reach the page]
+● Your API Keys(Public Key, Private Key)[ Direct URL to reach the page]
 
-● If you are not using Ecommerce plugin then you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
+● If you are not using E commerce plugin then make sure you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
 
 # Integration
 
-To give best customers expirence and ease out the development efforts FasterPay can be integrated in two simple options. FasterPay is designed to fit inside any website and help merchants to monetise the projects with minimum possible efforts.
+To give best customers experience and ease out the development efforts FasterPay can be integrated in two simple ways. FasterPay is designed to fit inside any website and help merchants to monetize the projects with minimum possible efforts.
 
 
 **Option 1: Pay Button**
 
-Here if you can make payments by passing minimum details like Amount, Product description and Success URL, Sucess URL is the URL where the customer will be redirected after completion of the trasnction. you can show them one payment button to intitiate FasterPay transaction. Payment button is a javscript which will collect all the details and pass it on FasterPay.  
+Here you can make payments by passing minimum details like Amount, Product description and Success URL, Success URL is the URL where the customer will be redirected after completion of the transaction. you can show them one payment button to initiate FasterPay transaction. Payment button is a JavaScript which will collect all the details and pass it on FasterPay.  
 
 ## Code Samples 
  
@@ -51,12 +41,12 @@ Here if you can make payments by passing minimum details like Amount, Product de
 ```
       
 
-Button size can be Small, Medium and large and that can be managed by passing diffrent size codes.
+Button size can be Small, Medium and large and that can be managed by passing different size codes.
     
 
 **Option 2: Custom Integration**
 
-Custome integration allows you to redirect your customer directly to our FasterPay Page. It is a browser to browser call where on selcting FasterPay option inside the checkout page of merchant website their customer can be redirected to FasterPay..
+Custom integration allows you to redirect your customer directly to our FasterPay Page. It is a browser to browser call where on selecting FasterPay option inside the checkout page of merchant website their customer can be redirected to FasterPay.
 
 **Method**
 
@@ -130,9 +120,31 @@ The additional parameters (e.g. PARAM_NAME_1=PARAM_VALUE_1PARAM_NAME_2=PARAM_VAL
     ?>
 ```
 
+## Sample HTML Post Form
+
+```
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+ <html>
+     <head>
+         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+ </head>
+  <body>
+    <form align="center" method="post" action="https://pay.fasterpay.com/payment/form">
+       <input type="hidden" id="amount" name="amount" value="10" />
+       <input type="hidden" id="currency" name="currency" value="USD" />
+       <input type="hidden" id="api_key" name="api_key" value="Your API Key" />
+       <input type="text" id="merchant_order_id" name="merchant_order_id" value="test_123" />
+       <input type="text" id="description" name="description" value="testing_product" />        
+       <input type="hidden" name="success_url" value="http://www.kushal.com" />
+       <input type="hidden" id="hash" name="hash" value="f389594dd1a789a88715b00cd80567dd4df405c281fc1e41d2628883b72ccc38" />
+       <input type="Submit" value="Pay Now"/>
+     </form> 
+    </body>
+ </html> 
+```
 # 2. Listen to FasterPay Pingbacks.
 
-Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the according users. To know more in details [click here](https://docs.paymentwall.com/reference/pingback-home)
+Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users. To know more in details [click here](https://docs.paymentwall.com/reference/pingback-home)
 
 **Method**
 
