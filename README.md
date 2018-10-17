@@ -22,11 +22,11 @@ Alongside serving your business its essential needs such as:
 
 # Prerequisite
 
-Before Starting the project please make sure you had created a Faster Pay account and submitted all required documents with details. If not done yet please [click here](https://my.passport.io/account/).After setting up the account please take a note of below details :
+Before Starting the project please make sure you had created a Faster Pay account and submitted all required documents with details. If not submitted yet please [click here](https://my.passport.io/account/).After setting up the account please take a note of below details :
 
 ● Your API Keys(Publick Key, Private Key)[ Direct URL to reach the page]
 
-● You have hosted a success page and you have the URL where Customer will get redirected after success transaction.
+● If you are not using Ecommerce plugin then you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
 
 # Integration
 
@@ -35,7 +35,7 @@ To give best customers expirence and ease out the development efforts FasterPay 
 
 **Option 1: Pay Button**
 
-Here if you pass details like Amount, Product description and Success URL, that much will be suffisgient. Sucess URL is the URL where the user will be redirected after completion of the trasnction. you can show them one payment button to intitiate FasterPay transaction. Payment button is a javscript which will collect all the details and pass it on FasterPay.  
+Here if you can make payments by passing minimum details like Amount, Product description and Success URL, Sucess URL is the URL where the customer will be redirected after completion of the trasnction. you can show them one payment button to intitiate FasterPay transaction. Payment button is a javscript which will collect all the details and pass it on FasterPay.  
 
 ## Code Samples 
  
@@ -56,7 +56,7 @@ Button size can be Small, Medium and large and that can be managed by passing di
 
 **Option 2: Custom Integration**
 
-Custome integration allows you to redirect your customer directly to our FasterPay Page. It is a browser to browser call where on selcting FasterPay option inside the checkout page of merchant website their customer will be redirected to FasterPay Page.
+Custome integration allows you to redirect your customer directly to our FasterPay Page. It is a browser to browser call where on selcting FasterPay option inside the checkout page of merchant website their customer can be redirected to FasterPay..
 
 **Method**
 
@@ -131,6 +131,8 @@ The additional parameters (e.g. PARAM_NAME_1=PARAM_VALUE_1PARAM_NAME_2=PARAM_VAL
 ```
 
 # 2. Listen to FasterPay Pingbacks.
+
+Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the according users. To know more in details [click here](https://docs.paymentwall.com/reference/pingback-home)
 
 **Method**
 
