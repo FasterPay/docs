@@ -111,8 +111,9 @@ https://pay.fasterpay.com/payment/form
 **Calculation algorithm for hash:**
 
 
-hash = SHA256("PARAM_NAME_1=PARAM_VALUE_1PARAM_NAME_2=PARAM_VALUE_2PARAM_NAME_3=PARAM_VALUE_3...PRIVATE_KEY")
-The additional parameters (e.g. PARAM_NAME_1=PARAM_VALUE_1PARAM_NAME_2=PARAM_VALUE_2) should be sorted alphabetically by the parameter name prior to hash calculation.
+hash = SHA256("PARAM_NAME_1=PARAM_VALUE_1&PARAM_NAME_2=PARAM_VALUE_2&PARAM_NAME_3=PARAM_VALUE_3&PARAM_NAME_4=PARAM_VALUE_4&PARAM_NAME_5=PARAM_VALUE_5&PARAM_NAME_6=PARAM_VALUE_6Private_Key")
+
+Sample Hash parameters String (amount=10&api_key=Your API Key&currency=USD&description=testing_product&merchant_order_id=Unique ID&success_url=Merchant Hosted URLYour Project Private key) should be sorted alphabetically by the parameter name prior to hash calculation.
 ```
     <?php
     $params = ksort($parameters);
