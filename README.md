@@ -3,11 +3,11 @@
 
 # Prerequisite
 
-Before Starting the project please sign up at (business.fasterpay.com)[https://business.fasterpay.com]. After providing the Business Detailsplease take a note of below details:
+Before Starting the project please sign up at [business.fasterpay.com](https://business.fasterpay.com).  After providing the Business Details please take a note of below details:
 
-● Your API Keys(Public Key, Private Key)[https://business.fasterpay.com/dashboard/#/integration-doc]
+● Your API Keys(Public Key, Private Key) [Here](https://business.fasterpay.com/dashboard/#/integration-doc)
 
-● If you are not using an E-commerce plugin then make sure you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
+● If you are not using an E-commerce plugin then make sure you have hosted a success page and you have the URL where customer will get redirected after success transaction.
 
 # Integration
 
@@ -52,56 +52,12 @@ https://pay.fasterpay.com/payment/form
 | Field | Required | Description | Example |
 |---|---|---|---|
 | amount | Yes | Payment amount in xxxx.yy format | 9999.99 |
-
-<table _ngcontent-c17="" class="data-table">
-                    <thead _ngcontent-c17="">
-                    <tr _ngcontent-c17="">
-                        <th _ngcontent-c17="">Field</th>
-                        <th _ngcontent-c17="">Required</th>
-                        <th _ngcontent-c17="">Description</th>
-                        <th _ngcontent-c17="">Example</th>
-                    </tr>
-                    </thead>
-
-                    <tbody _ngcontent-c17="">
-                    <!----><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">amount</td>
-                        <td _ngcontent-c17="">Yes</td>
-                        <td _ngcontent-c17="">Payment amount in xxxx.yy format</td>
-                        <td _ngcontent-c17="">9999.99</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">currency</td>
-                        <td _ngcontent-c17="">Yes</td>
-                        <td _ngcontent-c17="">Payment currency in ISO 4217 format</td>
-                        <td _ngcontent-c17="">EUR</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">api_key</td>
-                        <td _ngcontent-c17="">Yes</td>
-                        <td _ngcontent-c17="">Your Public Key</td>
-                        <td _ngcontent-c17="">xxxxyyyy</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">merchant_order_id</td>
-                        <td _ngcontent-c17="">Yes</td>
-                        <td _ngcontent-c17="">Your identifier of the payment, pass-through parameter</td>
-                        <td _ngcontent-c17="">order_12345</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">description</td>
-                        <td _ngcontent-c17="">Yes</td>
-                        <td _ngcontent-c17="">Product description</td>
-                        <td _ngcontent-c17="">Golden Ticket</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">success_url</td>
-                        <td _ngcontent-c17="">No</td>
-                        <td _ngcontent-c17="">Where a user should be redirected after successful payment</td>
-                        <td _ngcontent-c17="">https://mycompany.com/thankyou</td>
-                    </tr><tr _ngcontent-c17="">
-                        <td _ngcontent-c17="">hash</td>
-                        <td _ngcontent-c17="">No</td>
-                        <td _ngcontent-c17="">Security hash calculated using your Private Key for preventing changing the parameters. Calculation algorithm is described below</td>
-                        <td _ngcontent-c17="">xxxyyyy</td>
-                    </tr>
-                    </tbody>
-                </table>
+| currency | Yes | Payment currency in ISO 4217 format | EUR |
+| api_key | Yes | Your Public Key | xxxxyyyy |
+| merchant_order_id | Yes | Your identifier of the payment, pass-through parameter | order_12345 |
+| description | Yes | Product description | Golden Ticket |
+| success_url | No | Where a user should be redirected after successful paymentn | https://mycompany.com/thankyou |
+| hash | No | Security hash calculated using your Private Key for preventing changing the parameters. Calculation algorithm is described below | xxxyyyy |
                 
 **Calculation algorithm for hash:**
 
