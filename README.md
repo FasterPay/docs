@@ -28,7 +28,7 @@ Here you can make payments by passing minimum details like Amount, Product descr
           merchant="82b0c8a40c5d73ea08420816ec448d30" //Publick Key
           success_url=""
           size="lg">    // Small-sm, Medium-md
-      </script>
+</script>
 ```
       
 
@@ -66,10 +66,10 @@ hash = SHA256("PARAM_NAME_1=PARAM_VALUE_1&PARAM_NAME_2=PARAM_VALUE_2&PARAM_NAME_
 
 Sample Hash parameters String (amount=10&api_key=Your API Key&currency=USD&description=testing_product&merchant_order_id=Unique ID&success_url=Merchant Hosted URLYour Project Private key) should be sorted alphabetically by the parameter name prior to hash calculation.
 ```
-    <?php
-    $params = ksort($parameters);
-    $hash = hash('sha256', http_build_query($parameters) . $private_key);
-    ?>
+<?php
+$params = ksort($parameters);
+$hash   = hash('sha256', http_build_query($parameters) . $private_key);
+?>
 ```
 
 ## Sample HTML Post Form
@@ -96,7 +96,7 @@ Sample Hash parameters String (amount=10&api_key=Your API Key&currency=USD&descr
 ```
 # 2. Listen to FasterPay Pingbacks.
 
-Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users. To know more in details [click here](https://docs.paymentwall.com/reference/pingback-home)
+Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users.
 
 **Authentication**
 Header  
@@ -112,29 +112,29 @@ Your Pingback URL
 
 **Expected Body in Pingback Response**
 ```
-{
-      "event": "payment",
-      "payment_order": {
-        "id": 1005002001,
-        "merchant_order_id": "w146138485",
-        "status": "successful",
-        "paid_amount": 5,
-        "paid_currency": "USD",
-        "merchant_net_revenue": 4.23,
-        "merchant_rolling_reserve": 0.25,
-        "fees": 0.52,
-        "date": {
-          "date": "2018-04-25 12:15:07.000000",
-          "timezone_type": 3,
-          "timezone": "UTC"
-        }
-      },
-      "user": {
-        "firstname": "John",
-        "lastname": "Smith",
-        "username": "john-smith@my.passport.io",
-        "country": "TR",
-        "email": "john.smith@email.com"
+{  
+   "event":"payment",
+   "payment_order":{  
+      "id":1005002001,
+      "merchant_order_id":"w146138485",
+      "status":"successful",
+      "paid_amount":5,
+      "paid_currency":"USD",
+      "merchant_net_revenue":4.23,
+      "merchant_rolling_reserve":0.25,
+      "fees":0.52,
+      "date":{  
+         "date":"2018-04-25 12:15:07.000000",
+         "timezone_type":3,
+         "timezone":"UTC"
       }
-    }
+   },
+   "user":{  
+      "firstname":"John",
+      "lastname":"Smith",
+      "username":"john-smith@my.passport.io",
+      "country":"TR",
+      "email":"john.smith@email.com"
+   }
+}
 ```
