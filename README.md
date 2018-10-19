@@ -1,26 +1,17 @@
 # About FasterPay
-[FasterPay](https://auth.passport.io/?client_id=fasterpay) is introducing the new standard of a digital payments solution. FasterPay offers merchants from all areas and of all sizes exclusive features not found with any other digital payment solution such as:
-
-● Multiple currency processing, storing and receiving.
-
-● Quick and cheap withdrawals to any bank account.
-
-● Competitive rates.
-
-● Easy integration.
-
+[FasterPay](https://www.fasterpay.com) is introducing the Simpler, Faster, Global, Better E-Wallet.
 
 # Prerequisite
 
-Before Starting the project please make sure you had created a Faster Pay account and submitted all required documents with details. If not submitted yet please [click here](https://my.passport.io/account/). After setting up the account please take a note of below details :
+Before Starting the project please sign up at (business.fasterpay.com)[https://business.fasterpay.com]. After providing the Business Detailsplease take a note of below details:
 
-● Your API Keys(Public Key, Private Key)[ Direct URL to reach the page]
+● Your API Keys(Public Key, Private Key)[https://business.fasterpay.com/dashboard/#/integration-doc]
 
-● If you are not using E commerce plugin then make sure you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
+● If you are not using an E-commerce plugin then make sure you have hosted a success page and you have the URL where Customer will get redirected after success transaction.
 
 # Integration
 
-To give best customers experience and ease out the development efforts FasterPay can be integrated in two simple ways. FasterPay is designed to fit inside any website and help merchants to monetize the projects with minimum possible efforts.
+To give best customers experience and ease out the development efforts FasterPay can be integrated in two simple ways. FasterPay is designed to help merchants to monetize the projects with minimum possible efforts.
 
 
 **Option 1: Pay Button**
@@ -57,6 +48,10 @@ HTTP POST
 https://pay.fasterpay.com/payment/form
 
 **Parameters**
+
+| Field | Required | Description | Example |
+|---|---|---|---|
+| amount | Yes | Payment amount in xxxx.yy format | 9999.99 |
 
 <table _ngcontent-c17="" class="data-table">
                     <thead _ngcontent-c17="">
@@ -146,6 +141,10 @@ Sample Hash parameters String (amount=10&api_key=Your API Key&currency=USD&descr
 # 2. Listen to FasterPay Pingbacks.
 
 Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users. To know more in details [click here](https://docs.paymentwall.com/reference/pingback-home)
+
+**Authentication**
+Header  
+X-ApiKey: $YOUR_PRIVATE_KEY
 
 **Method**
 
