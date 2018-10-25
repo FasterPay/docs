@@ -1,7 +1,7 @@
 # About FasterPay
 [FasterPay](https://www.fasterpay.com) is introducing the Simpler, Faster, Global, Better E-Wallet.
 
-# Prerequisite
+## Prerequisite
 
 Before Starting the project please sign up at [business.fasterpay.com](https://business.fasterpay.com).  After providing the Business Details please take a note of below details:
 
@@ -9,7 +9,7 @@ Before Starting the project please sign up at [business.fasterpay.com](https://b
 
 ● If you are not using an E-commerce plugin then make sure you have hosted a success page and you have the URL where customer will get redirected after success transaction.
 
-# Integration
+## Integration
 
 To give best customers experience and ease out the development efforts FasterPay can be integrated in two simple ways. FasterPay is designed to help merchants to monetize the projects with minimum possible efforts.
 
@@ -94,7 +94,7 @@ $hash   = hash('sha256', http_build_query($parameters) . $private_key);
     </body>
  </html> 
 ```
-# 2. Listen to FasterPay Pingbacks.
+## Listen to FasterPay Pingbacks.
 
 Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users.
 
