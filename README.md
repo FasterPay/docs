@@ -52,6 +52,11 @@ https://pay.fasterpay.com/payment/form
 | Field | Required | Description | Example |
 |---|---|---|---|
 | amount | Yes | Payment amount in xxxx.yy format | 9999.99 |
+| email | No | Email in correct format | John.watson@gmail.com |
+| first_name | No | First name without special character | John |
+| last_name | No | Last name without special character | Watson |
+| city | No | city | London |
+| zip | No | Zip code | 201301 |
 | currency | Yes | Payment currency in ISO 4217 format | EUR |
 | api_key | Yes | Your Public Key | xxxxyyyy |
 | merchant_order_id | Yes | Your identifier of the payment, pass-through parameter | order_12345 |
