@@ -1,5 +1,4 @@
-
-## Table of Contents <!-- omit in toc -->
+**Table of Contents**
 - [About FasterPay](#about-fasterpay)
 - [Prerequisite](#prerequisite)
 - [Integration](#integration)
