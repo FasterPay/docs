@@ -1,110 +1,146 @@
-# About FasterPay
-[FasterPay](https://www.fasterpay.com) is introducing the Simpler, Faster, Global, Better E-Wallet.
+**Table of Contents**
+- [About FasterPay](#about-fasterpay)
+- [Prerequisite](#prerequisite)
+- [Integration](#integration)
+    - [Pay Button Integration](#pay-button-integration)
+        - [Pay Button Integration Parameters](#pay-button-integration-parameters)
+        - [Pay Button Integration Example](#pay-button-integration-example)
+    - [Custom Integration](#custom-integration)
+        - [Custom Integration Parameters](#custom-integration-parameters)
+        - [Custom Integration Example](#custom-integration-example)
+        - [Hash Calculation Algorithm](#hash-calculation-algorithm)
+- [Pingbacks](#pingbacks)
+
+## About FasterPay
+
+[FasterPay](https://www.fasterpay.com) is introducing the Simpler, Faster, Global, E-Wallet for your business.
 
 ## Prerequisite
 
-Before Starting the project please sign up at [business.fasterpay.com](https://business.fasterpay.com).  After providing the Business Details please take a note of below details:
+Before integrating FasterPay, please **Sign Up** at **[https://business.fasterpay.com](https://business.fasterpay.com)** and complete your **Business Model** and **Business Profile**. After your **Business Model** and **Business Profile** are verified you can follow the **[Integration Documentation](https://business.fasterpay.com/dashboard/#/integration-doc)**.
 
-● Your API Keys(Public Key, Private Key) [Here](https://business.fasterpay.com/dashboard/#/integration-doc)
-
-● If you are not using an E-commerce plugin then make sure you have hosted a success page and you have the URL where customer will get redirected after success transaction.
+**Please note that the verification process might take around 24h.**
 
 ## Integration
 
-To give best customers experience and ease out the development efforts FasterPay can be integrated in two simple ways. FasterPay is designed to help merchants to monetize the projects with minimum possible efforts.
+FasterPay could be integrated by using the **[Pay Button Integration](#pay-button-integration)** or **[Custom Integration](#custom-integration)**.
 
+### Pay Button Integration
 
-**Option 1: Pay Button**
+Pay Button is a simple way to integrate FasterPay widget by adding the script to your page and providing the required parameters from the table below.
 
-Here you can make payments by passing minimum details like Amount, Product description and Success URL, Success URL is the URL where the customer will be redirected after completion of the transaction. you can show them one payment button to initiate FasterPay transaction. Payment button is a JavaScript which will collect all the details and pass it on FasterPay.  
+#### Pay Button Integration Parameters
 
-## Code Samples 
- 
+| Parameter   | Required | Description                                                                             | Example                                |
+| ----------- | -------- | --------------------------------------------------------------------------------------- | -------------------------------------- |
+| src         | Yes      | FasterPay pay.js library                                                                | https://pay.fasterpay.com/pay.js       |
+| amount      | Yes      | Payment amount in 0000.00 format                                                        | 42.00                                  |
+| currency    | Yes      | Payment currency in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format | USD                                    |
+| description | Yes      | Product description                                                                     | Your product description               |
+| merchant    | Yes      | Public key                                                                              | rg2ji4cwmqmxpe3hbkt6j9rydvx748jm       |
+| success_url | No       | Success page URL                                                                        | https://yourcompanywebsite.com/success |
+| size        | No       | Pay Button size ("sm", "md" or "lg")                                                    | lg                                     |
+
+#### Pay Button Integration Example
+
 ```
-<script src="https://pay.fasterpay.com/pay.js"
-          amount="99.99"
-          currency="USD"
-          description="Your Product Name"
-          merchant="82b0c8a40c5d73ea08420816ec448d30" //Publick Key
-          success_url=""
-          size="lg">    // Small-sm, Medium-md
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FasterPay Pay Button Integration</title>
+</head>
+<body>
+    <script
+        src="https://pay.fasterpay.com/pay.js"
+        amount="42.00"
+        currency="USD"
+        description="Your product description"
+        merchant="rg2ji4cwmqmxpe3hbkt6j9rydvx748jm"
+        success_url="https://yourcompanywebsite.com/success"
+        size="lg">
+    </script>
+</body>
+</html>
 ```
-      
 
-Button size can be Small, Medium and large and that can be managed by passing different size codes.
-    
+### Custom Integration
 
-**Option 2: Custom Integration**
+Custom Integration allows you to redirect your customer directly to the FasterPay widget. It is a browser to browser call where on selecting FasterPay option on the checkout page of your website the customer is redirected to the FasterPay widget.
 
-Custom integration allows you to redirect your customer directly to our FasterPay Page. It is a browser to browser call where on selecting FasterPay option inside the checkout page of merchant website their customer can be redirected to FasterPay.
+#### Custom Integration Parameters
 
-**Method**
+| Parameter         | Required | Description                                                                             | Example                                |
+| ----------------- | -------- | --------------------------------------------------------------------------------------- | -------------------------------------- |
+| amount            | Yes      | Payment amount in 0000.00 format                                                        | 42.00                                  |
+| currency          | Yes      | Payment currency in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format | USD                                    |
+| description       | Yes      | Product description                                                                     | Your product description               |
+| api_key           | Yes      | Public key                                                                              | rg2ji4cwmqmxpe3hbkt6j9rydvx748jm       |
+| merchant_order_id | Yes      | Identifier of the payment                                                               | order_1                                |
+| email             | No       | Email                                                                                   | john.doe@email.com                     |
+| first_name        | No       | First name                                                                              | John                                   |
+| last_name         | No       | Last name                                                                               | Doe                                    |
+| city              | No       | City                                                                                    | Anytown                                |
+| zip               | No       | ZIP                                                                                     | 00000                                  |
+| success_url       | No       | Success page URL                                                                        | https://yourcompanywebsite.com/success |
+| hash              | No       | [Hash](#hash-calculation-algorithm)                                                     | rg2ji4cwmqmxpe3hbkt6j9rydvx748jm       |
 
-HTTP POST
+#### Custom Integration Example
 
-**URL**
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FasterPay Custom Integration</title>
+</head>
+<body>
+    <form action="https://pay.fasterpay.com/payment/form" method="post">
+        <input type="hidden" name="amount" value="42">
+        <input type="hidden" name="currency" value="USD">
+        <input type="hidden" name="description" value="Your product description">
+        <input type="hidden" name="api_key" value="rg2ji4cwmqmxpe3hbkt6j9rydvx748jm">
+        <input type="hidden" name="merchant_order_id" value="order_1">
+        
+        <input type="hidden" name="email" value="john.doe@email.com">
+        <input type="hidden" name="first_name" value="John">
+        <input type="hidden" name="last_name" value="Doe">
+        <input type="hidden" name="city" value="Anytown">
+        <input type="hidden" name="zip" value="00000">
+        <input type="hidden" name="success_url" value="https://yourcompanywebsite.com/success">
+        <input type="hidden" name="hash" value="rg2ji4cwmqmxpe3hbkt6j9rydvx748jm">
 
-https://pay.fasterpay.com/payment/form
+        <button type="submit">Pay</button>
+    </form>
+</body>
+</html>
+```
 
-**Parameters**
-
-| Field | Required | Description | Example |
-|---|---|---|---|
-| amount | Yes | Payment amount in xxxx.yy format | 9999.99 |
-| email | No | Email in correct format | John.watson@gmail.com |
-| first_name | No | First name without special character | John |
-| last_name | No | Last name without special character | Watson |
-| city | No | city | London |
-| zip | No | Zip code | 201301 |
-| currency | Yes | Payment currency in ISO 4217 format | EUR |
-| api_key | Yes | Your Public Key | xxxxyyyy |
-| merchant_order_id | Yes | Your identifier of the payment, pass-through parameter | order_12345 |
-| description | Yes | Product description | Golden Ticket |
-| success_url | No | Where a user should be redirected after successful paymentn | https://mycompany.com/thankyou |
-| hash | No | Security hash calculated using your Private Key for preventing changing the parameters. Calculation algorithm is described below | xxxyyyy |
-                
-**Calculation algorithm for hash:**
-
+#### Hash Calculation Algorithm
 
 hash = SHA256("PARAM_NAME_1=PARAM_VALUE_1&PARAM_NAME_2=PARAM_VALUE_2&PARAM_NAME_3=PARAM_VALUE_3&PARAM_NAME_4=PARAM_VALUE_4&PARAM_NAME_5=PARAM_VALUE_5&PARAM_NAME_6=PARAM_VALUE_6Private_Key")
 
 Sample Hash parameters String (amount=10&api_key=Your API Key&currency=USD&description=testing_product&merchant_order_id=Unique ID&success_url=Merchant Hosted URLYour Project Private key) should be sorted alphabetically by the parameter name prior to hash calculation.
+
 ```
 <?php
 $params = ksort($parameters);
-$hash   = hash('sha256', http_build_query($parameters) . $private_key);
+$hash = hash('sha256', http_build_query($parameters) . $private_key);
 ?>
 ```
 
-## Sample HTML Post Form
-
-```
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
- <html>
-     <head>
-         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
- </head>
-  <body>
-    <form align="center" method="post" action="https://pay.fasterpay.com/payment/form">
-       <input type="hidden" id="amount" name="amount" value="10" />
-       <input type="hidden" id="currency" name="currency" value="USD" />
-       <input type="hidden" id="api_key" name="api_key" value="Your API Key" />
-       <input type="text" id="merchant_order_id" name="merchant_order_id" value="test_123" />
-       <input type="text" id="description" name="description" value="testing_product" />        
-       <input type="hidden" name="success_url" value="http://www.kushal.com" />
-       <input type="hidden" id="hash" name="hash" value="f389594dd1a789a88715b00cd80567dd4df405c281fc1e41d2628883b72ccc38" />
-       <input type="Submit" value="Pay Now"/>
-     </form> 
-    </body>
- </html> 
-```
-## Listen to FasterPay Pingbacks.
+## Pingbacks
 
 Pingback request is sent from our servers to your Pingback listener script where we communicate to your server regarding the details about payment transactions so that your server can process the pingback automatically and deliver the goods to the respective users.
 
 **Authentication**
-Header  
+
+Header
+
 X-ApiKey: $YOUR_PRIVATE_KEY
 
 **Method**
@@ -116,30 +152,31 @@ HTTP POST
 Your Pingback URL
 
 **Expected Body in Pingback Response**
+
 ```
 {  
-   "event":"payment",
-   "payment_order":{  
-      "id":1005002001,
-      "merchant_order_id":"w146138485",
-      "status":"successful",
-      "paid_amount":5,
-      "paid_currency":"USD",
-      "merchant_net_revenue":4.23,
-      "merchant_rolling_reserve":0.25,
-      "fees":0.52,
-      "date":{  
-         "date":"2018-04-25 12:15:07.000000",
-         "timezone_type":3,
-         "timezone":"UTC"
+   "event": "payment",
+   "payment_order": {
+      "id": 1005002001,
+      "merchant_order_id": "w146138485",
+      "status": "successful",
+      "paid_amount": 5,
+      "paid_currency": "USD",
+      "merchant_net_revenue": 4.23,
+      "merchant_rolling_reserve": 0.25,
+      "fees": 0.52,
+      "date": {
+         "date": "2018-04-25 12:15:07.000000",
+         "timezone_type": 3,
+         "timezone": "UTC"
       }
    },
-   "user":{  
-      "firstname":"John",
-      "lastname":"Smith",
-      "username":"john-smith@my.passport.io",
-      "country":"TR",
-      "email":"john.smith@email.com"
+   "user": {
+      "firstname": "John",
+      "lastname": "Doe",
+      "username": "john-doe@my.passport.io",
+      "country": "TR",
+      "email": "john.doe@email.com"
    }
 }
 ```
